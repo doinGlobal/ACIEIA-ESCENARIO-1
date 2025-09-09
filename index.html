@@ -1,172 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Escenario 1</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/doinGlobalContents/MGPPIA-COORDINACIONDECURSADO/refs/heads/main/Favicon%20AI.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Fuente Poppins desde Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
-  :root {
-    --verde: #99cc06;
-    --gris-oscuro: #262626;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', POPPINS, sans-serif;
-    color: var(--gris-oscuro);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: #fff
-}
-
-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffff
-    border-bottom: 1px solid #ddd;
-      height: 100px;
-    padding-top: 19px;
-    padding-bottom: 19px;
-}
-
-h1 {
-    font-size: 2em;
-    text-align: center;
-    margin: 50px 0 0 0;
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.20);
-}
-
-.logonegro {
-    max-height: 70px;
-    visibility: visible;
-    text-align: center;
-    align-content: center;
-}
-
-.logoblanco {
-    max-height: 70px;
-    display: none;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 25px auto 0 auto;
-    flex: 1;
-    min-height: 600px;
-}
-
-.chatbot-container {
-    flex: 1 1 320px;
-    min-width: 220px;
-    max-width: 400px;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 600px;
-}
-
-.avatars-container {
-    flex: 2 1 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    height: 600px;
-}
-
-.avatar-container {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-        display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-}
-
-.heygen-embed-wrap {
-    width: 94%;
-    height: 95%;
-    margin: 0 auto;
-    background: transparent;
-    border-radius: 16px;
-    border: none;
-    overflow: hidden;
-    position: relative;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.heygen-embed-wrap iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    border-radius: 16px;
-    background: #000; /* fallback color while loading */
-}
-
-/* Pop-Up Styles */
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-}
-
-#Gif {
-    width: 70%;
-    height: auto;
-    border-radius: 8px;
-    animation: zoomIn 0.5s ease-in-out;
-}
-@keyframes zoomIn {
-    from {
-        transform: scale(0.90);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-.popup-content {
+      /* Página totalmente en blanco y el iframe ocupando todo */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #000; /* opcional; cámbialo a #fff si prefieres blanco */
+      }
+      iframe {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+        .popup-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -243,33 +97,17 @@ h1 {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.button-column button:hover {
-    background-color: var(--gris-oscuro);
-}
-
-}
     </style>
-</head>
-<body>
-    <header>
-    </header>
-       <div class="main-container">
-               <div class="avatars-container">
-            <div class="avatar-container active" id="avatar1">
-               <div class="heygen-embed-wrap" id="heygen-embed-wrap">
-                    <iframe
-                        src="https://labs.heygen.com",url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiIyNDdjNTFjMGM5MDc0NDI3YjNmMWZlNTBm%0D%0AZTJlYTg5YSIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0D%0ALzI0N2M1MWMwYzkwNzQ0MjdiM2YxZmU1MGZlMmVhODlhL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0D%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImI3%0D%0ANGJkZGQwN2U5YzQ0ZTNiYTA5OGQ4YzY3YmM5ZmNkIiwidXNlcm5hbWUiOiI5Mzc0NGZkZTc1NGY0%0D%0AY2ZjOTQzNjA2NTU4Y2M3NjZlZSJ9&inIFrame=1"
-                        allow="microphone"
-                        title="Streaming Embed"
-                        style="width:100%;height:100%;border:0;border-radius:16px;background:#000;"
-                        loading="lazy"
-                    ></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer fijo -->
-       <div id="popup" class="popup">
+  </head>
+  <body>
+    <iframe
+      src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiIyNDdjNTFjMGM5MDc0NDI3YjNmMWZlNTBmZTJlYTg5YSIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzI0N2M1MWMwYzkwNzQ0MjdiM2YxZmU1MGZlMmVhODlhL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImQ2MDcyM2VhM2Y0MjQzZmFhZDg4YmVmYjMxMDRlM2YwIiwidXNlcm5hbWUiOiI5Mzc0NGZkZTc1NGY0Y2ZjOTQzNjA2NTU4Y2M3NjZlZSJ9&amp;inIFrame=1"
+      allow="camera; microphone; autoplay; clipboard-read; clipboard-write; fullscreen; picture-in-picture; display-capture"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+         <div id="popup" class="popup">
         <div class="popup-content">
             <span id="closePopup" class="close">&times;</span>
             <h2>Importante</h2>
@@ -295,5 +133,5 @@ h1 {
             document.getElementById('popup').style.display = 'none';
         });
     </script>
-</body>
+  </body>
 </html>
